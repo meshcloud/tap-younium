@@ -5,6 +5,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 from typing import Any, Callable, Iterable
+from urllib.parse import parse_qs, parse_qsl, urlparse
 
 import requests
 from singer_sdk.helpers.jsonpath import extract_jsonpath
@@ -20,6 +21,9 @@ SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 class YouniumStream(RESTStream):
     """Younium stream class."""
 
+    records_jsonpath = "$.data[*]"  # Or override `parse_response`.
+    next_page_token_jsonpath = "$.nextPage"
+
     @property
     def url_base(self) -> str:
         """Return the API URL root, configurable via tap settings."""
@@ -28,8 +32,6 @@ class YouniumStream(RESTStream):
         else:
             endpoint = "https://api.younium.com"
         return endpoint
-
-    records_jsonpath = "$.data[*]"  # Or override `parse_response`.
 
     @cached_property
     def authenticator(self) -> _Auth:
@@ -54,9 +56,6 @@ class YouniumStream(RESTStream):
             headers["User-Agent"] = self.config.get("user_agent")
         return headers
 
-    def get_new_paginator(self) -> BaseAPIPaginator:
-        return JSONPathPaginator('$.nextPage')
-
     def get_url_params(
         self,
         context: dict | None,  # noqa: ARG002
@@ -72,7 +71,13 @@ class YouniumStream(RESTStream):
             A dictionary of URL query parameters.
         """
         params: dict = {}
-        if self.replication_key:
+        if next_page_token:
+            nexturl = urlparse(next_page_token)
+            # we already are in the middle of sync, fetch next page
+            query = parse_qsl(nexturl.query)
+            params.update(query)
+        elif self.replication_key:
             params["sort"] = "asc"
             params["order_by"] = self.replication_key
+
         return params

@@ -1,0 +1,340 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "format": "uuid",
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "bookingType": {
+      "type": "string"
+    },
+    "accountCategory": {
+      "type": "string"
+    },
+    "changeType": {
+      "type": "string"
+    },
+    "cmrr": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "amountInBaseCurrency": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "acv": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "amountInBaseCurrency": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "emrr": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "amountInBaseCurrency": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oneTimeFees": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "amountInBaseCurrency": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tcv": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "amountInBaseCurrency": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "fmrr": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "amountInBaseCurrency": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "effectiveDate": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "bookingLines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "charge": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "chargeNumber": {
+                "type": "string",
+                "example": "OPC-000001"
+              },
+              "description": {
+                "type": "string"
+              },
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "externalERPId": {
+                "type": "string"
+              },
+              "externalCRMId": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "cmrr": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "format": "double",
+                "type": "number"
+              },
+              "currencyCode": {
+                "type": "string"
+              },
+              "currencyConversionDate": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "baseCurrencyAmount": {
+                "format": "double",
+                "type": "number"
+              },
+              "baseCurrencyCode": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "acv": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "format": "double",
+                "type": "number"
+              },
+              "currencyCode": {
+                "type": "string"
+              },
+              "currencyConversionDate": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "baseCurrencyAmount": {
+                "format": "double",
+                "type": "number"
+              },
+              "baseCurrencyCode": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "emrr": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "format": "double",
+                "type": "number"
+              },
+              "currencyCode": {
+                "type": "string"
+              },
+              "currencyConversionDate": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "baseCurrencyAmount": {
+                "format": "double",
+                "type": "number"
+              },
+              "baseCurrencyCode": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "oneTimeFees": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "format": "double",
+                "type": "number"
+              },
+              "currencyCode": {
+                "type": "string"
+              },
+              "currencyConversionDate": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "baseCurrencyAmount": {
+                "format": "double",
+                "type": "number"
+              },
+              "baseCurrencyCode": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "tcv": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "format": "double",
+                "type": "number"
+              },
+              "currencyCode": {
+                "type": "string"
+              },
+              "currencyConversionDate": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "baseCurrencyAmount": {
+                "format": "double",
+                "type": "number"
+              },
+              "baseCurrencyCode": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "fmrr": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "format": "double",
+                "type": "number"
+              },
+              "currencyCode": {
+                "type": "string"
+              },
+              "currencyConversionDate": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "baseCurrencyAmount": {
+                "format": "double",
+                "type": "number"
+              },
+              "baseCurrencyCode": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "classification": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "chartColor": {
+          "type": "string"
+        },
+        "isSystemClassification": {
+          "type": "boolean"
+        },
+        "classificationType": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "order": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "chargeNumber": {
+          "type": "string",
+          "example": "OPC-000001"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "externalERPId": {
+          "type": "string"
+        },
+        "externalCRMId": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

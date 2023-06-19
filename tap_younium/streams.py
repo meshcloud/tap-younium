@@ -1,11 +1,12 @@
 """Stream type classes for tap-younium."""
 
 from __future__ import annotations
+import json
 
 from pathlib import Path
 
 from singer_sdk import typing as th  # JSON Schema typing helpers
-
+from singer_sdk._singerlib.schema import Schema, resolve_schema_references
 from tap_younium.client import YouniumStream
 
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
@@ -33,3 +34,23 @@ class ProductsStream(YouniumStream):
     replication_key = None
     schema_filepath = SCHEMAS_DIR / "product.json"  # noqa: ERA001
     
+
+class BookingsStream(YouniumStream):
+    name = "bookings"
+    path = "/Bookings"
+    primary_keys = ["id"]
+    replication_key = None
+
+
+    @property
+    def schema(self) -> dict:        
+        loaded = json.loads(Path(SCHEMAS_DIR / "booking.json").read_text())
+        # schema = Schema.from_dict(loaded)
+        
+        resolved = resolve_schema_references(loaded, loaded.get('definitions'))
+        return resolved
+        # return schema.to_dict()
+
+
+    def parse_response(self, response: requests.Response) -> t.Iterable[dict]:
+        return super().parse_response(response)

@@ -47,7 +47,9 @@ class YouniumStream(RESTStream):
         Returns:
             A dictionary of HTTP headers.
         """
-        headers = {}
+        headers = {
+            'api-version': '2.1'
+        }
         if "user_agent" in self.config:
             headers["User-Agent"] = self.config.get("user_agent")
         return headers

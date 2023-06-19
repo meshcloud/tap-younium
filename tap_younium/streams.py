@@ -40,17 +40,5 @@ class BookingsStream(YouniumStream):
     path = "/Bookings"
     primary_keys = ["id"]
     replication_key = None
-
-
-    @property
-    def schema(self) -> dict:        
-        loaded = json.loads(Path(SCHEMAS_DIR / "booking.json").read_text())
-        # schema = Schema.from_dict(loaded)
-        
-        resolved = resolve_schema_references(loaded, loaded.get('definitions'))
-        return resolved
-        # return schema.to_dict()
-
-
-    def parse_response(self, response: requests.Response) -> t.Iterable[dict]:
-        return super().parse_response(response)
+    schema_filepath = SCHEMAS_DIR / "booking.json"  # noqa: ERA001
+    

@@ -51,6 +51,8 @@ class TapYounium(Tap):
         """
         return [
             streams.SubscriptionsStream(self),
+            streams.InvoicesStream(self),
+            streams.ProductsStream(self),
         ]
 
 

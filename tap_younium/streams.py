@@ -18,3 +18,18 @@ class SubscriptionsStream(YouniumStream):
     replication_key = None
     schema_filepath = SCHEMAS_DIR / "subscription.json"  # noqa: ERA001
     
+
+class InvoicesStream(YouniumStream):
+    name = "invoices"
+    path = "/Invoices"
+    primary_keys = ["id"]
+    replication_key = None
+    schema_filepath = SCHEMAS_DIR / "invoice.json"  # noqa: ERA001
+    
+class ProductsStream(YouniumStream):
+    name = "products"
+    path = "/Products"
+    primary_keys = ["id"]
+    replication_key = None
+    schema_filepath = SCHEMAS_DIR / "product.json"  # noqa: ERA001
+    

@@ -53,7 +53,8 @@ class TapYounium(Tap):
             streams.SubscriptionsStream(self),
             streams.InvoicesStream(self),
             streams.ProductsStream(self),
-            streams.BookingsStream(self)
+            streams.BookingsStream(self),
+            streams.AccountsStream(self)
         ]
 
 

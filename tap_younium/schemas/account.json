@@ -1,0 +1,424 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "parentAccountId": {
+      "type": "string",
+      "format": "uuid",
+      "nullable": true
+    },
+    "accountNumber": {
+      "type": "string",
+      "nullable": true
+    },
+    "accountType": {
+      "type": "string"
+    },
+    "inactive": {
+      "type": "boolean"
+    },
+    "invoiceDeliveryMethod": {
+      "type": "string"
+    },
+    "accountsReceivable": {
+      "type": "string",
+      "nullable": true
+    },
+    "currencyCode": {
+      "type": "string",
+      "nullable": true
+    },
+    "defaultPaymentTerm": {
+      "type": "string",
+      "nullable": true
+    },
+    "domain": {
+      "type": "string",
+      "nullable": true
+    },
+    "electronicInvoiceAddress": {
+      "type": "string",
+      "nullable": true
+    },
+    "electronicInvoiceAddressScheme": {
+      "type": "string",
+      "description": "Electronic Invoice Scheme (EAS) code list.  Read more on: https://docs.peppol.eu/poacc/billing/3.0/codelist/eas/",
+      "nullable": true,
+      "example": "0007"
+    },
+    "imageUrl": {
+      "type": "string",
+      "nullable": true
+    },
+    "invoiceEmailAddress": {
+      "type": "string",
+      "nullable": true
+    },
+    "invoiceEmailCcAddresses": {
+      "type": "string",
+      "nullable": true
+    },
+    "reminderEmailAddress": {
+      "type": "string",
+      "nullable": true
+    },
+    "name": {
+      "type": "string",
+      "nullable": true
+    },
+    "organizationNumber": {
+      "type": "string",
+      "nullable": true
+    },
+    "ourReference": {
+      "type": "string",
+      "nullable": true
+    },
+    "taxRegistrationNumber": {
+      "type": "string",
+      "nullable": true
+    },
+    "taxTemplate": {
+      "type": "string",
+      "nullable": true
+    },
+    "yourReference": {
+      "type": "string",
+      "nullable": true
+    },
+    "invoiceTemplateId": {
+      "type": "string",
+      "format": "uuid",
+      "nullable": true
+    },
+    "invoiceBatchGroupId": {
+      "type": "string",
+      "format": "uuid",
+      "nullable": true
+    },
+    "invoiceSettingGroupId": {
+      "type": "string",
+      "format": "uuid",
+      "nullable": true
+    },
+    "defaultInvoiceAddress": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "nullable": true
+        },
+        "description": {
+          "type": "string",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "street": {
+          "type": "string",
+          "nullable": true
+        },
+        "street2": {
+          "type": "string",
+          "nullable": true
+        },
+        "city": {
+          "type": "string",
+          "nullable": true
+        },
+        "county": {
+          "type": "string",
+          "nullable": true
+        },
+        "state": {
+          "type": "string",
+          "nullable": true
+        },
+        "zip": {
+          "type": "string",
+          "nullable": true
+        },
+        "country": {
+          "type": "string",
+          "nullable": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "defaultDeliveryAddress": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "nullable": true
+        },
+        "description": {
+          "type": "string",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "street": {
+          "type": "string",
+          "nullable": true
+        },
+        "street2": {
+          "type": "string",
+          "nullable": true
+        },
+        "city": {
+          "type": "string",
+          "nullable": true
+        },
+        "county": {
+          "type": "string",
+          "nullable": true
+        },
+        "state": {
+          "type": "string",
+          "nullable": true
+        },
+        "zip": {
+          "type": "string",
+          "nullable": true
+        },
+        "country": {
+          "type": "string",
+          "nullable": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "addresses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "street": {
+            "type": "string",
+            "nullable": true
+          },
+          "street2": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "county": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "zip": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "nullable": true
+    },
+    "customFields": {
+      "type": "object",
+      "additionalProperties": {},
+      "nullable": true
+    },
+    "onlinePaymentDetails": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modified": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "stripeCustomerId": {
+          "type": "string",
+          "nullable": true
+        },
+        "stripePaymentMethodId": {
+          "type": "string",
+          "nullable": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "externalERPId": {
+      "type": "string",
+      "nullable": true
+    },
+    "externalCRMId": {
+      "type": "string",
+      "nullable": true
+    },
+    "cmrr": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "currencyCode": {
+          "type": "string",
+          "nullable": true
+        },
+        "currencyConversionDate": {
+          "type": "string",
+          "format": "date-time",
+          "nullable": true
+        },
+        "baseCurrencyAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "baseCurrencyCode": {
+          "type": "string",
+          "nullable": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "acv": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "currencyCode": {
+          "type": "string",
+          "nullable": true
+        },
+        "currencyConversionDate": {
+          "type": "string",
+          "format": "date-time",
+          "nullable": true
+        },
+        "baseCurrencyAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "baseCurrencyCode": {
+          "type": "string",
+          "nullable": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "emrr": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "currencyCode": {
+          "type": "string",
+          "nullable": true
+        },
+        "currencyConversionDate": {
+          "type": "string",
+          "format": "date-time",
+          "nullable": true
+        },
+        "baseCurrencyAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "baseCurrencyCode": {
+          "type": "string",
+          "nullable": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "oneTimeFees": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "currencyCode": {
+          "type": "string",
+          "nullable": true
+        },
+        "currencyConversionDate": {
+          "type": "string",
+          "format": "date-time",
+          "nullable": true
+        },
+        "baseCurrencyAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "baseCurrencyCode": {
+          "type": "string",
+          "nullable": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "tcv": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "currencyCode": {
+          "type": "string",
+          "nullable": true
+        },
+        "currencyConversionDate": {
+          "type": "string",
+          "format": "date-time",
+          "nullable": true
+        },
+        "baseCurrencyAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "baseCurrencyCode": {
+          "type": "string",
+          "nullable": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

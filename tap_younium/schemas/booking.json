@@ -309,19 +309,13 @@
     "order": {
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string"
-        },
-        "chargeNumber": {
-          "type": "string",
-          "example": "OPC-000001"
-        },
-        "description": {
-          "type": "string"
-        },
         "id": {
           "format": "uuid",
           "type": "string"
+        },
+        "orderNumber": {
+          "type": "string",
+          "example": "OPC-000001"
         },
         "externalERPId": {
           "type": "string"

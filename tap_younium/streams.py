@@ -32,8 +32,8 @@ class SubscriptionsStream(YouniumStream):
         custom = self.config["custom_field_schemas"]
         
         self.apply_custom_fields(schema, custom.get("subscription"))
-        self.apply_custom_fields(schema["properties"]["products"]["items"], custom.get("subscription_product"))
-        self.apply_custom_fields(schema["properties"]["products"]["items"]["properties"]["charges"]["items"], custom.get("subscription_product_charges"))
+        self.apply_custom_fields(schema["properties"]["products"]["items"], custom.get("product"))
+        self.apply_custom_fields(schema["properties"]["products"]["items"]["properties"]["charges"]["items"], custom.get("charge"))
 
         return schema
     
@@ -43,14 +43,50 @@ class InvoicesStream(YouniumStream):
     path = "/Invoices"
     primary_keys = ["id"]
     replication_key = None
-    schema_filepath = SCHEMAS_DIR / "invoice.json"
+
+    @property
+    def schema(self) -> dict:
+        """Get dynamic schema including the configured tag schema
+
+        Returns:
+            JSON Schema dictionary for this stream.
+        """
+    
+        schema_filepath = SCHEMAS_DIR / "invoice.json"
+        schema = json.loads(Path(schema_filepath).read_text())
+
+        custom = self.config["custom_field_schemas"]
+        
+        self.apply_custom_fields(schema, custom.get("invoice"))
+        self.apply_custom_fields(schema["properties"]["invoiceLines"]["items"], custom.get("charge"))
+
+        return schema
+
     
 class ProductsStream(YouniumStream):
     name = "products"
     path = "/Products"
     primary_keys = ["id"]
     replication_key = None
-    schema_filepath = SCHEMAS_DIR / "product.json"
+    
+    @property
+    def schema(self) -> dict:
+        """Get dynamic schema including the configured tag schema
+
+        Returns:
+            JSON Schema dictionary for this stream.
+        """
+    
+        schema_filepath = SCHEMAS_DIR / "product.json"
+        schema = json.loads(Path(schema_filepath).read_text())
+
+        custom = self.config["custom_field_schemas"]
+        
+        self.apply_custom_fields(schema, custom.get("product"))
+        self.apply_custom_fields(schema["properties"]["chargePlans"]["items"]["properties"]["charges"]["items"], custom.get("charge"))
+
+        return schema
+    
     
 class BookingsStream(YouniumStream):
     name = "bookings"

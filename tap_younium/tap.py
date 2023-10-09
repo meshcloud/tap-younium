@@ -46,8 +46,9 @@ class TapYounium(Tap):
             th.ObjectType(
                 th.Property("account", th.ObjectType(), required=False),
                 th.Property("subscription", th.ObjectType(), required=False),
-                th.Property("subscription_product", th.ObjectType(), required=False),
-                th.Property("subscription_product_charge", th.ObjectType(), required=False)
+                th.Property("product", th.ObjectType(), required=False),
+                th.Property("charge", th.ObjectType(), required=False),
+                th.Property("invoice", th.ObjectType(), required=False)
             ),
             required=False,
         )

@@ -40,7 +40,18 @@ class TapYounium(Tap):
             "start_date",
             th.DateTimeType,
             description="The earliest record date to sync",
+        ),
+        th.Property(
+            "custom_field_schemas",
+            th.ObjectType(
+                th.Property("account", th.ObjectType(), required=False),
+                th.Property("subscription", th.ObjectType(), required=False),
+                th.Property("subscription_product", th.ObjectType(), required=False),
+                th.Property("subscription_product_charge", th.ObjectType(), required=False)
+            ),
+            required=False,
         )
+
     ).to_dict()
 
     def discover_streams(self) -> list[streams.YouniumStream]:

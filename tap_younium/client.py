@@ -81,3 +81,10 @@ class YouniumStream(RESTStream):
             params["order_by"] = self.replication_key
 
         return params
+
+    def apply_custom_fields(self, schema: dict, patch: dict | None):
+        # many targets don't deal well with empty tag schemas so we remove the customFields property if we have no schema
+        if (patch is None) :
+            del schema["properties"]["customFields"]
+        else:
+            schema["properties"]["customFields"] = patch

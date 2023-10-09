@@ -17,8 +17,27 @@ class SubscriptionsStream(YouniumStream):
     path = "/Subscriptions"
     primary_keys = ["id"]
     replication_key = None
-    schema_filepath = SCHEMAS_DIR / "subscription.json"
+
+    @property
+    def schema(self) -> dict:
+        """Get dynamic schema including the configured tag schema
+
+        Returns:
+            JSON Schema dictionary for this stream.
+        """
     
+        schema_filepath = SCHEMAS_DIR / "subscription.json"
+        schema = json.loads(Path(schema_filepath).read_text())
+
+        custom = self.config["custom_field_schemas"]
+        
+        self.apply_custom_fields(schema, custom.get("subscription"))
+        self.apply_custom_fields(schema["properties"]["products"]["items"], custom.get("subscription_product"))
+        self.apply_custom_fields(schema["properties"]["products"]["items"]["properties"]["charges"]["items"], custom.get("subscription_product_charges"))
+
+        return schema
+    
+
 class InvoicesStream(YouniumStream):
     name = "invoices"
     path = "/Invoices"
@@ -46,3 +65,21 @@ class AccountsStream(YouniumStream):
     primary_keys = ["id"]
     replication_key = None
     schema_filepath = SCHEMAS_DIR / "account.json" 
+
+    @property
+    def schema(self) -> dict:
+        """Get dynamic schema including the configured tag schema
+
+        Returns:
+            JSON Schema dictionary for this stream.
+        """
+    
+        schema_filepath = SCHEMAS_DIR / "account.json"
+        schema = json.loads(Path(schema_filepath).read_text())
+
+        custom = self.config["custom_field_schemas"]
+        
+        self.apply_custom_fields(schema, custom.get("account"))
+        
+        return schema
+    

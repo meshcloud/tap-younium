@@ -344,7 +344,8 @@
                   "type": "number"
                 },
                 "customFields": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {}
                 },
                 "priceDetails": {
                   "type": "array",
@@ -531,7 +532,8 @@
             }
           },
           "customFields": {
-            "type": "object"
+            "type": "object",
+            "properties": {}
           },
           "externalERPId": {
             "type": "string"
@@ -730,7 +732,8 @@
       "type": "string"
     },
     "customFields": {
-      "type": "object"
+      "type": "object",
+      "properties": {}
     },
     "cmrr": {
       "type": "object",

@@ -328,6 +328,14 @@
     },
     "notes": {
       "type": "string"
+    },
+    "created": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "modified": {
+      "format": "date-time",
+      "type": "string"
     }
   },
   "additionalProperties": false

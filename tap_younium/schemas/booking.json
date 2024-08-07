@@ -7,7 +7,7 @@
       "type": "string"
     },
     "currency": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "bookingType": {
       "type": "string"
@@ -327,7 +327,7 @@
       "additionalProperties": false
     },
     "notes": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "created": {
       "format": "date-time",

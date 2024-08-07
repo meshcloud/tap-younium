@@ -21,7 +21,7 @@
       "type": "string"
     },
     "remarks": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "effectiveStartDate": {
       "type": "string"
@@ -30,10 +30,10 @@
       "type": "string"
     },
     "cancellationDate": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "effectiveChangeDate": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "orderDate": {
       "type": "string"
@@ -42,7 +42,7 @@
       "type": "string"
     },
     "lastRenewalDate": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "noticePeriod": {
       "type": "number"
@@ -69,13 +69,13 @@
       "type": "boolean"
     },
     "yourReference": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "ourReference": {
       "type": "string"
     },
     "yourOrderNumber": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "invoiceAddress": {
       "type": "object",
@@ -113,7 +113,7 @@
       }
     },
     "deliveryAddress": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "id": {
           "type": "string"
@@ -148,7 +148,7 @@
       }
     },
     "invoiceBatchGroup": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "id": {
           "type": "string"
@@ -180,10 +180,10 @@
           "type": "string"
         },
         "externalERPId": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "externalCRMId": {
-          "type": "string"
+          "type": ["string", "null"]
         }
       }
     },
@@ -200,10 +200,10 @@
           "type": "string"
         },
         "externalERPId": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "externalCRMId": {
-          "type": "string"
+          "type": ["string", "null"]
         }
       }
     },
@@ -417,10 +417,10 @@
                   }
                 },
                 "externalERPId": {
-                  "type": "string"
+                  "type": ["string", "null"]
                 },
                 "externalCRMId": {
-                  "type": "string"
+                  "type": ["string", "null"]
                 },
                 "cmrr": {
                   "type": "object",
@@ -536,10 +536,10 @@
             "properties": {}
           },
           "externalERPId": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "externalCRMId": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "cmrr": {
             "type": "object",
@@ -723,13 +723,13 @@
       "type": "string"
     },
     "externalERPId": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "externalCRMId": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "currencyCodeToUseWhenInvoice": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "customFields": {
       "type": "object",

@@ -32,7 +32,7 @@
         }
       },
       "notes": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "invoiceDate": {
         "type": "string"
@@ -41,7 +41,7 @@
         "type": "string"
       },
       "daysPastDue": {
-        "type": "number"
+        "type": ["number", "null"]
       },
       "nrOfReminders": {
         "type": "number"
@@ -120,7 +120,7 @@
         }
       },
       "deliveryAddress": {
-        "type": "object",
+        "type": ["object", "null"],
         "properties": {
           "id": {
             "type": "string"
@@ -318,37 +318,37 @@
         }
       },
       "yourReference": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "ourReference": {
         "type": "string"
       },
       "yourOrderNumber": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "buyerReference": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "invoiceType": {
         "type": "string"
       },
       "sendMethod": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "exchangeRate": {
         "type": "number"
       },
       "settledNotes": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "invoiceTemplateId": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "disableAutomaticInvoiceReminder": {
         "type": "boolean"
       },
       "onlinePaymentLink": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "accountsReceivable": {
         "type": "object",
@@ -366,10 +366,10 @@
             "type": "string"
           },
           "externalERPId": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "externalCRMId": {
-            "type": "string"
+            "type": ["string", "null"]
           }
         }
       },
@@ -377,10 +377,10 @@
         "type": "object"
       },
       "externalERPId": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "externalCRMId": {
-        "type": "string"
+        "type": ["string", "null"]
       }
     }
   }

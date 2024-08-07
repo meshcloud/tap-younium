@@ -18,16 +18,16 @@
         "type": "string"
       },
       "activationDate": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "endOfNewSalesDate": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "endOfRenewalDate": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "endOfLifeDate": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "isFrameworkProduct": {
         "type": "boolean"
@@ -112,10 +112,10 @@
                     "type": "boolean"
                   },
                   "externalERPId": {
-                    "type": "string"
+                    "type": ["string", "null"]
                   },
                   "externalCRMId": {
-                    "type": "string"
+                    "type": ["string", "null"]
                   },
                   "deferredRevenueAccount": {
                     "type": "string"
@@ -162,10 +162,10 @@
         }
       },
       "externalERPId": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "externalCRMId": {
-        "type": "string"
+        "type": ["string", "null"]
       },
       "customFields": {
         "type": "object"

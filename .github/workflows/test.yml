@@ -25,6 +25,12 @@ jobs:
     - name: Install dependencies
       run: |
         poetry install
+    - name: prepare test env
+      env:
+        TEST_CONFIG_JSON: ${{ secrets.TEST_CONFIG_JSON }}
+      run: |
+        mkdir .secrets
+        echo $TEST_CONFIG_JSON > .secrets/config.json
     - name: Test with pytest
       run: |
         poetry run pytest

@@ -9,10 +9,8 @@ from tap_younium.client import YouniumStream
 
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
-
-class SubscriptionsStream(YouniumStream):
-    name = "subscriptions"
-    path = "/Subscriptions"
+# base class for order based streams
+class OrderStream(YouniumStream):
     primary_keys = ["id"]
     replication_key = None
 
@@ -34,7 +32,10 @@ class SubscriptionsStream(YouniumStream):
         self.apply_custom_fields(schema["properties"]["products"]["items"]["properties"]["charges"]["items"], custom.get("charge"))
 
         return schema
-    
+
+class SubscriptionsStream(OrderStream):
+    name = "subscriptions"
+    path = "/Subscriptions"
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
         """Return a context dictionary for child streams."""
@@ -42,9 +43,9 @@ class SubscriptionsStream(YouniumStream):
             "orderNumber": record["orderNumber"],
         }
 
-
-class SubscriptionVersionsStream(YouniumStream):
+class SubscriptionVersionsStream(OrderStream):
     name = "subscription_versions"
+    path = "/Subscriptions/{orderNumber}/versions"
     
     parent_stream_type = SubscriptionsStream
     ignore_parent_replication_keys = True
@@ -52,29 +53,26 @@ class SubscriptionVersionsStream(YouniumStream):
 
     records_jsonpath = "$[*]"  # the versions resource returns plain arrays
 
-    # Path is auto-populated using parent context keys:
-    path = "/Subscriptions/{orderNumber}/versions"
-    primary_keys = ["id"]
+class SalesOrdersStream(OrderStream):
+    name = "sales_orders"
+    path = "/SalesOrders"
 
-    # todo: share with SubscriptionsStream
-    @property
-    def schema(self) -> dict:
-        """Get dynamic schema including the configured tag schema
+    def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
+        """Return a context dictionary for child streams."""
+        return {
+            "orderNumber": record["orderNumber"],
+        }
 
-        Returns:
-            JSON Schema dictionary for this stream.
-        """
+class SalesOrderVersionsStream(OrderStream):
+    name = "sales_order_versions"
+    path = "/SalesOrders/{orderNumber}/versions"
     
-        schema_filepath = SCHEMAS_DIR / "subscription.json"
-        schema = json.loads(Path(schema_filepath).read_text())
+    parent_stream_type = SalesOrdersStream
+    ignore_parent_replication_keys = True
+    state_partitioning_keys = []
 
-        custom = self.config["custom_field_schemas"]
-        
-        self.apply_custom_fields(schema, custom.get("subscription"))
-        self.apply_custom_fields(schema["properties"]["products"]["items"], custom.get("product"))
-        self.apply_custom_fields(schema["properties"]["products"]["items"]["properties"]["charges"]["items"], custom.get("charge"))
+    records_jsonpath = "$[*]"  # the versions resource returns plain arrays
 
-        return schema
     
 class InvoicesStream(YouniumStream):
     name = "invoices"

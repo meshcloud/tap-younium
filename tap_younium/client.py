@@ -2,14 +2,11 @@
 
 from __future__ import annotations
 
-import sys
 from pathlib import Path
-from typing import Any, Callable, Iterable
-from urllib.parse import parse_qs, parse_qsl, urlparse
+from typing import Any, Callable
+from urllib.parse import parse_qsl, urlparse
 
 import requests
-from singer_sdk.helpers.jsonpath import extract_jsonpath
-from singer_sdk.pagination import BaseAPIPaginator, JSONPathPaginator
 from singer_sdk.streams import RESTStream
 
 from tap_younium.auth import YouniumAuthenticator

@@ -24,10 +24,10 @@
       "type": ["string", "null"]
     },
     "effectiveStartDate": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "effectiveEndDate": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "cancellationDate": {
       "type": ["string", "null"]
@@ -39,28 +39,28 @@
       "type": "string"
     },
     "noticePeriodDate": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "lastRenewalDate": {
       "type": ["string", "null"]
     },
     "noticePeriod": {
-      "type": "number"
+      "type": ["number", "null"]
     },
     "term": {
-      "type": "number"
+      "type": ["number", "null"]
     },
     "renewalTerm": {
-      "type": "number"
+      "type": ["number", "null"]
     },
     "isAutoRenewed": {
-      "type": "boolean"
+      "type": ["boolean", "null"]
     },
     "orderType": {
       "type": "string"
     },
     "termType": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "orderPaymentMethod": {
       "type": "string"
@@ -78,7 +78,7 @@
       "type": ["string", "null"]
     },
     "invoiceAddress": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "id": {
           "type": "string"
@@ -260,10 +260,10 @@
                   "type": "string"
                 },
                 "effectiveStartDate": {
-                  "type": "string"
+                  "type": ["string", "null"]
                 },
                 "effectiveEndDate": {
-                  "type": "string"
+                  "type": ["string", "null"]
                 },
                 "quantity": {
                   "type": "number"
@@ -423,7 +423,7 @@
                   "type": ["string", "null"]
                 },
                 "cmrr": {
-                  "type": "object",
+                  "type": ["object", "null"],
                   "properties": {
                     "amount": {
                       "type": "number"
@@ -443,7 +443,7 @@
                   }
                 },
                 "acv": {
-                  "type": "object",
+                  "type": ["object", "null"],
                   "properties": {
                     "amount": {
                       "type": "number"
@@ -463,7 +463,7 @@
                   }
                 },
                 "tcv": {
-                  "type": "object",
+                  "type": ["object", "null"],
                   "properties": {
                     "amount": {
                       "type": "number"
@@ -503,7 +503,7 @@
                   }
                 },
                 "oneTimeFees": {
-                  "type": "object",
+                  "type": ["object", "null"],
                   "properties": {
                     "amount": {
                       "type": "number"
@@ -542,7 +542,7 @@
             "type": ["string", "null"]
           },
           "cmrr": {
-            "type": "object",
+            "type": ["object", "null"],
             "properties": {
               "amount": {
                 "type": "number"
@@ -562,7 +562,7 @@
             }
           },
           "acv": {
-            "type": "object",
+            "type": ["object", "null"],
             "properties": {
               "amount": {
                 "type": "number"
@@ -582,7 +582,7 @@
             }
           },
           "emrr": {
-            "type": "object",
+            "type": ["object", "null"],
             "properties": {
               "amount": {
                 "type": "number"
@@ -602,7 +602,7 @@
             }
           },
           "oneTimeFees": {
-            "type": "object",
+            "type": ["object", "null"],
             "properties": {
               "amount": {
                 "type": "number"
@@ -622,7 +622,7 @@
             }
           },
           "tcv": {
-            "type": "object",
+            "type": ["object", "null"],
             "properties": {
               "amount": {
                 "type": "number"
@@ -736,7 +736,7 @@
       "properties": {}
     },
     "cmrr": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "amount": {
           "type": "number"
@@ -756,7 +756,7 @@
       }
     },
     "acv": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "amount": {
           "type": "number"
@@ -776,7 +776,7 @@
       }
     },
     "emrr": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "amount": {
           "type": "number"
@@ -796,7 +796,7 @@
       }
     },
     "oneTimeFees": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "amount": {
           "type": "number"
@@ -816,7 +816,7 @@
       }
     },
     "tcv": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "amount": {
           "type": "number"
